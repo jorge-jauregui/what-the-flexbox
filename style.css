@@ -1,48 +1,160 @@
-/* CSS Normalize */
-article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary{display:block;}audio,canvas,video{display:inline-block;}audio:not([controls]){display:none;height:0;}[hidden]{display:none;}html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;}a:focus{outline:thin dotted;}a:active,a:hover{outline:0;}h1{font-size:2em;}abbr[title]{border-bottom:1px dotted;}b,strong{font-weight:700;}dfn{font-style:italic;}mark{background:#ff0;color:#000;}code,kbd,pre,samp{font-family:monospace, serif;font-size:1em;}pre{white-space:pre-wrap;word-wrap:break-word;}q{quotes:\201C \201D \2018 \2019;}small{font-size:80%;}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;}sup{top:-.5em;}sub{bottom:-.25em;}img{border:0;}svg:not(:root){overflow:hidden;}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em;}button,input,select,textarea{font-family:inherit;font-size:100%;margin:0;}button,input{line-height:normal;}button,html input[type=button],/* 1 */
-input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer;}button[disabled],input[disabled]{cursor:default;}input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0;}input[type=search]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box;}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none;}textarea{overflow:auto;vertical-align:top;}table{border-collapse:collapse;border-spacing:0;}body,figure{margin:0;}legend,button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0;}
+/* Some CSS Setup - nothing to do with flexbox */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap');
 
-/* Box-sizing border-box */
-* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
-
-
-/* Some default styles to make each box visible */
-.box {
-  color:white;
-  font-size: 50px;
-  text-align: center;
-  text-shadow:4px 4px 0 rgba(0,0,0,0.1);
-  padding:10px;
+html {
+  box-sizing: border-box;
 }
 
-/* Colours for each box */
-.box1 { background:#1abc9c;}
-.box2 { background:#3498db;}
-.box3 { background:#9b59b6;}
-.box4 { background:#34495e;}
-.box5 { background:#f1c40f;}
-.box6 { background:#e67e22;}
-.box7 { background:#e74c3c;}
-.box8 { background:#bdc3c7;}
-.box9 { background:#2ecc71;}
-.box10 { background:#16a085;}
-
-
-/* We start writing out flexbox here. The above is just page setup */
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  border: 10px solid green;
-  height: 100vh;
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
-.box {
-  flex-basis: 250px;
-  flex-grow: 1;
+html {
+  font-size: 10px;
 }
 
-.box3{
-  flex-grow: 5;
+body {
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+  font-size: 1.5rem;
+  background-color: #3f0d12;
+  background-image: linear-gradient(315deg, #3f0d12 0%, #a71d31 74%);
+  
   
 }
+
+h1.title {
+  font-family: 'Dancing Script', cursive;
+}
+
+a {
+  color:white;
+  text-decoration: none;
+}
+
+a.button {
+  background:rgba(0,0,0,0.1);
+  padding:1rem 1.5rem;
+  border-radius:4px;
+}
+
+
+.app-wrap {
+  max-width:540px;
+  height: 90vh;
+  margin: 5vh auto 5vh auto;
+  border:10px solid rgba(0,0,0,0.8);
+  border-bottom-width: 70px;
+  border-radius:10px;
+  box-shadow:0 0 50px  rgba(0,0,0,0.3);
+}
+
+
+.content {
+  padding:20px;
+  background:white;
+  box-shadow:inset 0 5px 0 rgba(0,0,0,0.1);
+  line-height: 1.6;
+}
+
+.content img {
+  max-width:50%;
+  float:left;
+  margin-right: 10px;
+}
+
+
+.icon-bar a {
+  text-align: center;
+  padding:1.5rem;
+  border-left:1px solid rgba(0,0,0,0.1);
+  background:#202020;
+  color:white;
+}
+.icon-bar a:hover{
+  opacity: 0.7;
+}
+
+.icon-bar a:first-child {
+  border-left: 0;
+}
+
+.icon-bar a:first-child, .icon-bar a:hover {
+  border-bottom: 5px solid rgba(0,0,0,0.1);
+}
+
+.icon-bar {
+  border-top:1px solid #E6E6E6;
+}
+
+.icon-bar i {
+  display: block;
+  font-size: 2.5rem;
+  color:white;
+  text-shadow:3px 3px 0 rgba(0,0,0,0.1);
+  padding-bottom: 1rem;
+}
+
+.app-header {
+  background:#202020;
+  color:white;
+  padding:1rem;
+}
+
+
+/*
+  Everything So far is Cosmetic styling 
+  Flexbox + Important CSS Starts Here
+*/
+
+
+/*
+  Overall Layout
+*/
+
+
+.app-wrap {
+  display:flex;
+  flex-direction:column;
+}
+
+.app-wrap > * {
+  flex:1 1 auto;
+}
+
+/*
+  Header
+*/
+
+.app-header {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+/*
+  Content
+*/
+
+.content {
+  overflow-y:scroll;
+  -webkit-overflow-scrolling:touch;
+}
+
+/*
+  Icon Bar 
+*/
+
+.icon-bar {
+  display:flex;
+}
+
+.icon-bar a {
+  flex:1;
+}
+
+/*
+moving css gradient
+*/
+
